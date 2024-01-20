@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Content Include="hidapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UHFAPI.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UHFControl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RfidDepo.DesktopReader\RfidDepo.DesktopReader.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UHFControl">
+      <HintPath>UHFControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,182 @@
+﻿<Window x:Class="RFIDDEPO_R1_Sample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RFIDDEPO_R1_Sample"
+        mc:Ignorable="d"
+        Title="RFID Depo Chaninway R1 Örnek Uygulama" Height="587" Width="800" Loaded="Window_Loaded">
+    <Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0" Margin="0,0,0,247" Grid.RowSpan="2">
+
+                <Grid.RowDefinitions>
+
+
+
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="0" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Height="35" Margin="0,0,266,0" VerticalAlignment="Top">
+                        <Button x:Name="BTN_Connect" Content="USB UHF Okuyucuya Bağlan" VerticalAlignment="Center" Click="BTN_Connect_USB_Click" Margin="40,0,40,0"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Button x:Name="BTN_Start" Content="Okumayı Başlat" VerticalAlignment="Center" Click="BTN_Start_Click" Margin="69,0,70,0"/>
+
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Button x:Name="BTN_Stop" Content="Okumayı Durdur" VerticalAlignment="Center" Click="BTN_Stop_Click" Margin="69,0,70,0"/>
+
+                    </Grid>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="1">
+
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+
+                    <DataGrid x:Name="dataGrid" ColumnWidth="*" AutoGenerateColumns="True" SelectionChanged="dataGrid_SelectionChanged" BorderBrush="White">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+
+                                    <!--<DataTrigger Binding="{Binding Path=Okuma}" Value="True">
+                                    <Setter Property="Background" Value="Green"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </DataTrigger>
+
+                                <DataTrigger Binding="{Binding Path=Printed}" Value="True">
+                                    <Setter Property="Background" Value="Blue"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </DataTrigger>-->
+                                    <!--<Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Foreground" Value="Green" />
+                                    <Setter Property="Background" Value="Gray" />
+                                </Trigger>-->
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <!--<DataGrid.Resources>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                            </Style>
+                        </DataGrid.Resources>-->
+                        <DataGrid.Columns>
+
+
+                            <DataGridTemplateColumn Header="EPC" Width="*">
+
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <!--<Grid Background="Red">-->
+                                        <TextBlock Text="{Binding Epc}" />
+                                        <!--</Grid>-->
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Sayaç" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Count}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <!--<DataGridTemplateColumn Header="Aktif Stok" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Stok}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Pasif Stok" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding PasifStok}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>-->
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+
+
+
+
+
+            </Grid>
+
+
+            <Grid Grid.Row="2">
+
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <!--<Button Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180" Click="Button_Click" Visibility="Hidden"/>-->
+                </Grid>
+                <Grid Grid.Column="1"/>
+                <Grid Grid.Column="2">
+                    <Button x:Name="Btn_Ekle" Visibility="Hidden" Content="Yeni Envanter Kaydet" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180" Click="Btn_Ekle_Click"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button x:Name="Btn_Ekle_Copy" Visibility="Hidden" Content="Seçilen Envanteri Yaz" HorizontalAlignment="Center" VerticalAlignment="Center" Width="180" Click="Btn_Ekle1_Click"/>
+                </Grid>
+
+
+
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Label Content="Chainway R1 Okuyucu ile çalışmak için tasarlanmış örnek uygulamadır. Detaylı bilgi için rfiddepo.com'u ziyaret edebilirsiniz." VerticalAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" Width="780" Margin="0,0,10,0"/>
+
+
+
+
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
